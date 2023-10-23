@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CallRegisterWeb.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CallRegisterWeb.Data
 {
@@ -8,5 +9,8 @@ namespace CallRegisterWeb.Data
         {
             
         }
+
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<Agent> Agents { get; set; }
     }
 }
