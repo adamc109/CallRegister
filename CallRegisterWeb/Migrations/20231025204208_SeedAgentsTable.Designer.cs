@@ -4,6 +4,7 @@ using CallRegisterWeb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CallRegisterWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231025204208_SeedAgentsTable")]
+    partial class SeedAgentsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,10 +37,6 @@ namespace CallRegisterWeb.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Team")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Agents");
@@ -46,32 +45,22 @@ namespace CallRegisterWeb.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "Nick",
-                            Team = "Distribution"
+                            Name = "Nick"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Mark",
-                            Team = "Distribution"
+                            Name = "Mark"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "David",
-                            Team = "Actuator"
+                            Name = "David"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Dean",
-                            Team = "Air and Fluid"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Kenny",
-                            Team = "Electrical"
+                            Name = "Dean"
                         });
                 });
 
