@@ -1,0 +1,35 @@
+﻿@model List<Agent>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>List of Agents</h1>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Agent" asp-action="Create" class="btn btn-primary">Add Agent</>
+            </a>
+        </div>
+    </div>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Team
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.Team))
+            {
+                <tr>
+                    <td>@obj.Name</td>
+                    <td>@obj.Team</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

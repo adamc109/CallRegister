@@ -4,12 +4,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CallRegisterWeb.Controllers
 {
-    public class EmailController : Controller
+    public class AgentController : Controller
     {
         private readonly ApplicationDbContext _db;
-        public EmailController(ApplicationDbContext db)
+        public AgentController(ApplicationDbContext db)
         {
-            _db= db;
+            _db = db;
         }
         public IActionResult Index()
         {
@@ -17,6 +17,9 @@ namespace CallRegisterWeb.Controllers
             return View(objAgentList);
         }
 
-        
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }
