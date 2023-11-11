@@ -21,5 +21,10 @@ namespace CallRegisterWeb.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Create(Agent obj)
+        {
+            return View();
+        }
     }
 }
