@@ -24,7 +24,13 @@ namespace CallRegisterWeb.Controllers
         [HttpPost]
         public IActionResult Create(Agent obj)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _db.Agents.Add(obj);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Agent");
         }
     }
 }
