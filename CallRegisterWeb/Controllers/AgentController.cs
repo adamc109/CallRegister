@@ -32,5 +32,21 @@ namespace CallRegisterWeb.Controllers
 
             return RedirectToAction("Index", "Agent");
         }
+
+        public IActionResult Edit(int id)
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Edit(Agent obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Agents.Add(obj);
+                _db.SaveChanges();
+            }
+
+            return RedirectToAction("Index", "Agent");
+        }
     }
 }
