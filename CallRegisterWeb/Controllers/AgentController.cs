@@ -1,6 +1,7 @@
 ﻿using CallRegisterWeb.Data;
 using CallRegisterWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace CallRegisterWeb.Controllers
 {
@@ -33,20 +34,33 @@ namespace CallRegisterWeb.Controllers
             return RedirectToAction("Index", "Agent");
         }
 
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
-            return View();
+            if(id== null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Agent? agentFromDb = _db.Agents.Find(id);
+            if (agentFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(agentFromDb);
         }
         [HttpPost]
         public IActionResult Edit(Agent obj)
         {
             if (ModelState.IsValid)
             {
-                _db.Agents.Add(obj);
+                _db.Agents.Update(obj);
                 _db.SaveChanges();
+                return RedirectToAction("Index", "Agent");
             }
 
-            return RedirectToAction("Index", "Agent");
+            
+            return View();
         }
+ 
     }
 }
