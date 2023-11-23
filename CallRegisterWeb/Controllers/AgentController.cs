@@ -29,9 +29,11 @@ namespace CallRegisterWeb.Controllers
             {
                 _db.Agents.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Agent Created Successfully";
+                return RedirectToAction("Index", "Agent");
             }
 
-            return RedirectToAction("Index", "Agent");
+            return View();
         }
 
         public IActionResult Edit(int? id)
@@ -55,12 +57,39 @@ namespace CallRegisterWeb.Controllers
             {
                 _db.Agents.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Agent Updated Successfully";
                 return RedirectToAction("Index", "Agent");
-            }
-
-            
+            }            
             return View();
         }
- 
+
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Agent? agentFromDb = _db.Agents.Find(id);
+            if (agentFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(agentFromDb);
+        }
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeletePost(int? id)
+        {
+            Agent? obj = _db.Agents.Find(id); 
+            if (obj == null)
+            {
+                return NotFound(id);
+            }
+            _db.Agents.Remove(obj);
+            _db.SaveChanges();
+            TempData["success"] = "Agent Deleted Successfully";
+            return RedirectToAction("Index");
+        }
+
     }
 }
