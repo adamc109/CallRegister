@@ -1,4 +1,5 @@
-using CallRegisterWeb.Data;
+
+using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

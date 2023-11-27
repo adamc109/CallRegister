@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace CallRegisterWeb.Migrations
+namespace CallRegisterWeb.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddAgentTables : Migration

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace CallRegisterWeb.Models
+namespace CallRegister.Models
 {
     public class Agent
     {
@@ -9,9 +9,9 @@ namespace CallRegisterWeb.Models
         [Required]
         [MaxLength(30)]
         [DisplayName("Agent Name")]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [DisplayName("Agent Team")]
         [MaxLength(30)]
-        public string Team { get; set; }
+        public string? Team { get; set; }
     }
 }

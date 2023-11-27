@@ -1,4 +1,4 @@
-namespace CallRegisterWeb.Models
+namespace CallRegister.Models
 {
     public class ErrorViewModel
     {

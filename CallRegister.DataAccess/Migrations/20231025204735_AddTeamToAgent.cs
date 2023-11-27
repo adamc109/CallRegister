@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace CallRegisterWeb.Migrations
+namespace CallRegisterWeb.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddTeamToAgent : Migration

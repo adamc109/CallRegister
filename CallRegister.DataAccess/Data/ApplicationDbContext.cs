@@ -1,7 +1,7 @@
-﻿using CallRegisterWeb.Models;
+﻿using CallRegister.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace CallRegisterWeb.Data
+namespace CallRegisterWeb.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

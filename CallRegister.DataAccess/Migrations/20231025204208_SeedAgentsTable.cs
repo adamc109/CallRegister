@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace CallRegisterWeb.Migrations
+namespace CallRegisterWeb.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedAgentsTable : Migration

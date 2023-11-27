@@ -1,5 +1,5 @@
-﻿using CallRegisterWeb.Data;
-using CallRegisterWeb.Models;
+﻿using CallRegister.Models;
+using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CallRegisterWeb.Controllers

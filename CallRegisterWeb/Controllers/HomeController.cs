@@ -1,4 +1,4 @@
-using CallRegisterWeb.Models;
+using CallRegister.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
