@@ -1,4 +1,5 @@
-﻿using CallRegister.Models;
+﻿using CallRegister.DataAccess.Repository.IRepository;
+using CallRegister.Models;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
@@ -7,14 +8,14 @@ namespace CallRegisterWeb.Controllers
 {
     public class AgentController : Controller
     {
-        private readonly ApplicationDbContext _db;
-        public AgentController(ApplicationDbContext db)
+        private readonly IAgentRepository _agentRepo;
+        public AgentController(IAgentRepository db)
         {
-            _db = db;
+            _agentRepo = db;
         }
         public IActionResult Index()
         {
-            List<Agent> objAgentList = _db.Agents.ToList();
+            List<Agent> objAgentList = _agentRepo.GetAll().ToList();
             return View(objAgentList);
         }
 
@@ -27,8 +28,8 @@ namespace CallRegisterWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Agents.Add(obj);
-                _db.SaveChanges();
+                _agentRepo.Add(obj);
+                _agentRepo.Save();
                 TempData["success"] = "Agent Created Successfully";
                 return RedirectToAction("Index", "Agent");
             }
@@ -43,7 +44,7 @@ namespace CallRegisterWeb.Controllers
                 return NotFound();
             }
 
-            Agent? agentFromDb = _db.Agents.Find(id);
+            Agent? agentFromDb = _agentRepo.Get(u=>u.Id==id);
             if (agentFromDb == null)
             {
                 return NotFound();
@@ -55,8 +56,8 @@ namespace CallRegisterWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Agents.Update(obj);
-                _db.SaveChanges();
+                _agentRepo.Update(obj);
+                _agentRepo.Save();
                 TempData["success"] = "Agent Updated Successfully";
                 return RedirectToAction("Index", "Agent");
             }            
@@ -70,7 +71,7 @@ namespace CallRegisterWeb.Controllers
                 return NotFound();
             }
 
-            Agent? agentFromDb = _db.Agents.Find(id);
+            Agent? agentFromDb = _agentRepo.Get(u => u.Id == id);
             if (agentFromDb == null)
             {
                 return NotFound();
@@ -80,13 +81,13 @@ namespace CallRegisterWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Agent? obj = _db.Agents.Find(id); 
+            Agent? obj = _agentRepo.Get(u => u.Id == id); 
             if (obj == null)
             {
                 return NotFound(id);
             }
-            _db.Agents.Remove(obj);
-            _db.SaveChanges();
+            _agentRepo.Remove(obj);
+            _agentRepo.Save();
             TempData["success"] = "Agent Deleted Successfully";
             return RedirectToAction("Index");
         }
