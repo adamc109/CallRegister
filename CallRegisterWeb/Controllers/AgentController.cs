@@ -1,4 +1,5 @@
-﻿using CallRegister.DataAccess.Repository.IRepository;
+﻿using CallRegister.DataAccess.Repository;
+using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -8,14 +9,14 @@ namespace CallRegisterWeb.Controllers
 {
     public class AgentController : Controller
     {
-        private readonly IAgentRepository _agentRepo;
-        public AgentController(IAgentRepository db)
+        private readonly IUnitOfWork _unitOfWork;
+        public AgentController(IUnitOfWork unitOfWork)
         {
-            _agentRepo = db;
+            _unitOfWork = unitOfWork;
         }
         public IActionResult Index()
         {
-            List<Agent> objAgentList = _agentRepo.GetAll().ToList();
+            List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll().ToList();
             return View(objAgentList);
         }
 
@@ -28,8 +29,8 @@ namespace CallRegisterWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _agentRepo.Add(obj);
-                _agentRepo.Save();
+                _unitOfWork.AgentRepository.Add(obj);
+                _unitOfWork.AgentRepository.Save();
                 TempData["success"] = "Agent Created Successfully";
                 return RedirectToAction("Index", "Agent");
             }
@@ -44,7 +45,7 @@ namespace CallRegisterWeb.Controllers
                 return NotFound();
             }
 
-            Agent? agentFromDb = _agentRepo.Get(u=>u.Id==id);
+            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u=>u.Id==id);
             if (agentFromDb == null)
             {
                 return NotFound();
@@ -56,8 +57,8 @@ namespace CallRegisterWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                _agentRepo.Update(obj);
-                _agentRepo.Save();
+                _unitOfWork.AgentRepository.Update(obj);
+                _unitOfWork.Save();
                 TempData["success"] = "Agent Updated Successfully";
                 return RedirectToAction("Index", "Agent");
             }            
@@ -71,7 +72,7 @@ namespace CallRegisterWeb.Controllers
                 return NotFound();
             }
 
-            Agent? agentFromDb = _agentRepo.Get(u => u.Id == id);
+            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u => u.Id == id);
             if (agentFromDb == null)
             {
                 return NotFound();
@@ -81,13 +82,13 @@ namespace CallRegisterWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Agent? obj = _agentRepo.Get(u => u.Id == id); 
+            Agent? obj = _unitOfWork.AgentRepository.Get(u => u.Id == id); 
             if (obj == null)
             {
                 return NotFound(id);
             }
-            _agentRepo.Remove(obj);
-            _agentRepo.Save();
+            _unitOfWork.AgentRepository.Remove(obj);
+            _unitOfWork.Save();
             TempData["success"] = "Agent Deleted Successfully";
             return RedirectToAction("Index");
         }

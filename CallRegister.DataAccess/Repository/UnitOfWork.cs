@@ -22,7 +22,7 @@ namespace CallRegister.DataAccess.Repository
 
         public void Save()
         {
-            throw new NotImplementedException();
+            _db.SaveChanges();
         }
     }
 }
