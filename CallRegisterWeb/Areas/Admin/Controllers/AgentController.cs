@@ -5,8 +5,9 @@ using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
-namespace CallRegisterWeb.Controllers
+namespace CallRegisterWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class AgentController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -40,12 +41,12 @@ namespace CallRegisterWeb.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id== null || id == 0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
 
-            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u=>u.Id==id);
+            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u => u.Id == id);
             if (agentFromDb == null)
             {
                 return NotFound();
@@ -61,7 +62,7 @@ namespace CallRegisterWeb.Controllers
                 _unitOfWork.Save();
                 TempData["success"] = "Agent Updated Successfully";
                 return RedirectToAction("Index", "Agent");
-            }            
+            }
             return View();
         }
 
@@ -82,7 +83,7 @@ namespace CallRegisterWeb.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePost(int? id)
         {
-            Agent? obj = _unitOfWork.AgentRepository.Get(u => u.Id == id); 
+            Agent? obj = _unitOfWork.AgentRepository.Get(u => u.Id == id);
             if (obj == null)
             {
                 return NotFound(id);

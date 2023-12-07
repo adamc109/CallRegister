@@ -2,8 +2,9 @@ using CallRegister.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace CallRegisterWeb.Controllers
+namespace CallRegisterWeb.Areas.User.Controllers
 {
+    [Area("User")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
