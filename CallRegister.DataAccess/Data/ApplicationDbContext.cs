@@ -11,7 +11,10 @@ namespace CallRegisterWeb.DataAccess.Data
         }
 
         public DbSet<Email> Emails { get; set; }
+        public DbSet<PhoneCall> PhoneCalls { get; set; }
         public DbSet<Agent> Agents { get; set; }
+        public DbSet<Products> Products { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
