@@ -10,18 +10,22 @@ using System.Threading.Tasks;
 
 namespace CallRegister.DataAccess.Repository
 {
-    public class AgentRepository : Repository<Agent>, IAgentRepository
+    public class ProductsRepository : Repository<Products>, IProductsRepository
     {
         private ApplicationDbContext _db;
-        public AgentRepository(ApplicationDbContext db) : base(db) //pass to base class
+        public ProductsRepository(ApplicationDbContext db) : base(db) //pass to base class
         { 
             _db = db;
         }
 
-
-        public void Update(Agent obj)
+        public void Save()
         {
-            _db.Agents.Update(obj);
+            _db.SaveChanges();
+        }
+
+        public void Update(Products obj)
+        {
+            _db.Products.Update(obj);
         }
     }
 }

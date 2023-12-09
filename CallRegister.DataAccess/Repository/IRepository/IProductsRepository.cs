@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace CallRegister.DataAccess.Repository.IRepository
 {
-    public interface IAgentRepository : IRepository<Agent>
+    public interface IProductsRepository : IRepository<Products>
     {
-        void Update(Agent obj);
+        void Update(Products obj);
     }
 }

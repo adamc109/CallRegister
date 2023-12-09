@@ -9,6 +9,7 @@ namespace CallRegister.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         IAgentRepository AgentRepository { get; }
+        IProductsRepository ProductsRepository { get; }
 
         void Save();
     }
