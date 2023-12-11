@@ -14,6 +14,7 @@ namespace CallRegisterWeb.DataAccess.Data
         public DbSet<PhoneCall> PhoneCalls { get; set; }
         public DbSet<Agent> Agents { get; set; }
         public DbSet<Products> Products { get; set; }
+        public DbSet<Teams> Teams { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -32,7 +33,13 @@ namespace CallRegisterWeb.DataAccess.Data
                 new Products { Id = 3, Name = "Chillers" },
                 new Products { Id = 4, Name = "Air Prep" },
                 new Products { Id = 5, Name = "Valves" }
+                );
 
+            modelBuilder.Entity<Teams>().HasData(
+                new Products { Id = 1, Name = "Distribution" },
+                new Products { Id = 2, Name = "Actuators" },
+                new Products { Id = 3, Name = "Air and Fluid" },
+                new Products { Id = 4, Name = "Electrical" }
                 );
         }
     }
