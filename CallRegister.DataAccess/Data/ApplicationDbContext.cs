@@ -36,10 +36,10 @@ namespace CallRegisterWeb.DataAccess.Data
                 );
 
             modelBuilder.Entity<Teams>().HasData(
-                new Products { Id = 1, Name = "Distribution" },
-                new Products { Id = 2, Name = "Actuators" },
-                new Products { Id = 3, Name = "Air and Fluid" },
-                new Products { Id = 4, Name = "Electrical" }
+                new Teams { Id = 1, Name = "Distribution" },
+                new Teams { Id = 2, Name = "Actuators" },
+                new Teams { Id = 3, Name = "Air and Fluid" },
+                new Teams { Id = 4, Name = "Electrical" }
                 );
         }
     }

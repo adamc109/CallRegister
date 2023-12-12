@@ -13,6 +13,6 @@ namespace CallRegister.Models
         public int Id { get; set; }
         [DisplayName("Agent Team")]
         [MaxLength(30)]
-        public string? Team { get; set; }
+        public string? Name { get; set; }
     }
 }

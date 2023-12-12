@@ -4,6 +4,7 @@ using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CallRegisterWeb.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231212212836_AddTeamsTable")]
+    partial class AddTeamsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,7 +192,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Team")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -200,23 +203,19 @@ namespace CallRegisterWeb.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Name = "Distribution"
+                            Id = 1
                         },
                         new
                         {
-                            Id = 2,
-                            Name = "Actuators"
+                            Id = 2
                         },
                         new
                         {
-                            Id = 3,
-                            Name = "Air and Fluid"
+                            Id = 3
                         },
                         new
                         {
-                            Id = 4,
-                            Name = "Electrical"
+                            Id = 4
                         });
                 });
 #pragma warning restore 612, 618
