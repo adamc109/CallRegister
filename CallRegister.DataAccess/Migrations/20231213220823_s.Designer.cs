@@ -4,6 +4,7 @@ using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CallRegisterWeb.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231213220823_s")]
+    partial class s
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,9 +41,12 @@ namespace CallRegisterWeb.DataAccess.Migrations
                     b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("TeamsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("TeamId");
+                    b.HasIndex("TeamsId");
 
                     b.ToTable("Agents");
 
@@ -225,7 +231,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
                 {
                     b.HasOne("CallRegister.Models.Teams", "Teams")
                         .WithMany()
-                        .HasForeignKey("TeamId");
+                        .HasForeignKey("TeamsId");
 
                     b.Navigation("Teams");
                 });

@@ -20,11 +20,11 @@ namespace CallRegisterWeb.DataAccess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Agent>().HasData(
-                new Agent { Id = 1, Name = "Nick", Team= "Distribution" },
-                new Agent { Id = 2, Name = "Mark", Team = "Distribution" },
-                new Agent { Id = 3, Name = "David", Team = "Actuator" },
-                new Agent { Id = 4, Name = "Dean", Team = "Air and Fluid" },
-                new Agent { Id = 5, Name = "Kenny", Team = "Electrical" }
+                new Agent { Id = 1, Name = "Nick", TeamId = 1 },
+                new Agent { Id = 2, Name = "Mark", TeamId = 2 },
+                new Agent { Id = 3, Name = "David", TeamId = 3 },
+                new Agent { Id = 4, Name = "Dean", TeamId = 3 },
+                new Agent { Id = 5, Name = "Kenny", TeamId = 4 }
                 );
 
             modelBuilder.Entity<Products>().HasData(

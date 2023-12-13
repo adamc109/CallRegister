@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CallRegister.Models
 {
@@ -11,7 +12,8 @@ namespace CallRegister.Models
         [DisplayName("Agent Name")]
         public string? Name { get; set; }
         [DisplayName("Agent Team")]
-        [MaxLength(30)]
-        public string? Team { get; set; }
+        public int? TeamId { get; set; }
+        [ForeignKey("TeamId")]
+        public Teams? Teams { get; set; }
     }
 }

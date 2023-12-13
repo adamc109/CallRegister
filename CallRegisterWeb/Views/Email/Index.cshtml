@@ -22,11 +22,11 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var obj in Model.OrderBy(u => u.Team))
+            @foreach (var obj in Model.OrderBy(u => u.TeamId))
             {
                 <tr>
                     <td>@obj.Name</td>
-                    <td>@obj.Team</td>
+                    <td>@obj.TeamId</td>
                 </tr>
             }
         </tbody>
