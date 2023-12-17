@@ -3,6 +3,7 @@ using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection.Metadata.Ecma335;
 
 namespace CallRegisterWeb.Areas.Admin.Controllers
@@ -18,6 +19,11 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         public IActionResult Index()
         {
             List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll().ToList();
+            IEnumerable<SelectListItem> TeamsList = _unitOfWork.TeamsRepository.GetAll().Select(u=> new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
             return View(objAgentList);
         }
 
