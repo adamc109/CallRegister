@@ -4,6 +4,7 @@ using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CallRegisterWeb.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240108214651_addImgUrlToProducts")]
+    partial class addImgUrlToProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,7 +45,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Agents", (string)null);
+                    b.ToTable("Agents");
 
                     b.HasData(
                         new
@@ -105,7 +108,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Emails", (string)null);
+                    b.ToTable("Emails");
                 });
 
             modelBuilder.Entity("CallRegister.Models.PhoneCall", b =>
@@ -136,7 +139,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("PhoneCalls", (string)null);
+                    b.ToTable("PhoneCalls");
                 });
 
             modelBuilder.Entity("CallRegister.Models.Products", b =>
@@ -155,7 +158,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products", (string)null);
+                    b.ToTable("Products");
 
                     b.HasData(
                         new
@@ -204,7 +207,7 @@ namespace CallRegisterWeb.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
 
                     b.HasData(
                         new

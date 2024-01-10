@@ -29,10 +29,10 @@ namespace CallRegisterWeb.DataAccess.Data
 
             modelBuilder.Entity<Products>().HasData(
                 new Products { Id = 1, Name = "Actuators", ImageUrl="" },
-                new Products { Id = 2, Name = "Eletric Drives", ImageUrl = "" },
+                new Products { Id = 2, Name = "Electric Drives", ImageUrl = "" },
                 new Products { Id = 3, Name = "Chillers", ImageUrl = "" },
                 new Products { Id = 4, Name = "Air Prep", ImageUrl = "" },
-                new Products { Id = 5, Name = "Valves", ImageUrl = "" }
+                new Products { Id = 9, Name = "Valves", ImageUrl = "" }
                 );
 
             modelBuilder.Entity<Teams>().HasData(

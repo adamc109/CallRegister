@@ -19,16 +19,20 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         public IActionResult Index()
         {
             List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll().ToList();
-            IEnumerable<SelectListItem> TeamsList = _unitOfWork.TeamsRepository.GetAll().Select(u=> new SelectListItem
-            {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
+
             return View(objAgentList);
         }
 
         public IActionResult Create()
         {
+            //converts team to select list item
+            IEnumerable<SelectListItem> TeamsList = _unitOfWork.TeamsRepository.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+
+            ViewData["TeamsList"] = TeamsList;
             return View();
         }
         [HttpPost]
