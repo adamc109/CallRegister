@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,8 +13,9 @@ namespace CallRegister.Models
         [DisplayName("Agent Name")]
         public string? Name { get; set; }
         [DisplayName("Agent Team")]
-        public int? TeamId { get; set; }
+        public int TeamId { get; set; }
         [ForeignKey("TeamId")]
-        public Teams? Teams { get; set; }
+        [ValidateNever]
+        public Teams Teams { get; set; }
     }
 }

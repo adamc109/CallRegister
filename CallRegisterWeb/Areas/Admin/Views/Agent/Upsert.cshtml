@@ -1,0 +1,48 @@
+﻿@model AgentVM
+
+<form method="post">
+    <input asp-for="Agent.Id" hidden/>
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">@(Model.Agent.Id!=0?"Update":"Create") Agent</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Agent.Name"></label>
+            <input asp-for="Agent.Name" class="form-control" />
+            <span asp-validation-for="Agent.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Agent.TeamId"></label>
+
+            <select asp-for="Agent.TeamId" asp-items="@Model.TeamsList" class="form-control">
+                <option disabled selected>--Select Team--</option>
+            </select>
+            <span asp-validation-for="Agent.TeamId" class="text-danger"></span>
+ 
+        </div>
+        <div class="row">
+            <div class="col-6">
+                @if (Model.Agent.Id!=0)
+                {
+                    <button type="submit" class="btn btn-primary">Update</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary">Create</button>
+                }
+
+                <a asp-controller="Agent" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+
+        </div>
+
+        
+    </div>
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial" />
+    }
+}

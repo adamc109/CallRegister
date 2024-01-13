@@ -1,6 +1,7 @@
 ﻿using CallRegister.DataAccess.Repository;
 using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
+using CallRegister.Models.ViewModels;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -23,24 +24,37 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             return View(objAgentList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            //converts team to select list item
-            IEnumerable<SelectListItem> TeamsList = _unitOfWork.TeamsRepository.GetAll().Select(u => new SelectListItem
+            AgentVM agentVM = new()
             {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
+                TeamsList = _unitOfWork.TeamsRepository.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                 Agent = new Agent()
+            };
 
-            ViewData["TeamsList"] = TeamsList;
-            return View();
+            if (id == null || id == 0)
+            {
+                //create
+                return View(agentVM);
+            }
+            else
+            {
+                //update
+                agentVM.Agent = _unitOfWork.AgentRepository.Get(u=>u.Id == id);
+                return View(agentVM);
+            }
+
         }
         [HttpPost]
-        public IActionResult Create(Agent obj)
+        public IActionResult Upsert(AgentVM agentVM)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.AgentRepository.Add(obj);
+                _unitOfWork.AgentRepository.Add(agentVM.Agent);
                 _unitOfWork.Save();
                 TempData["success"] = "Agent Created Successfully";
                 return RedirectToAction("Index", "Agent");
@@ -49,32 +63,6 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-
-            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u => u.Id == id);
-            if (agentFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(agentFromDb);
-        }
-        [HttpPost]
-        public IActionResult Edit(Agent obj)
-        {
-            if (ModelState.IsValid)
-            {
-                _unitOfWork.AgentRepository.Update(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Agent Updated Successfully";
-                return RedirectToAction("Index", "Agent");
-            }
-            return View();
-        }
 
         public IActionResult Delete(int? id)
         {
