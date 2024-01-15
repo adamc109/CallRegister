@@ -16,6 +16,7 @@ namespace CallRegister.Models
         public int TeamId { get; set; }
         [ForeignKey("TeamId")]
         [ValidateNever]
+        //navigation property
         public Teams Teams { get; set; }
     }
 }

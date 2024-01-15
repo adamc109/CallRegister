@@ -19,7 +19,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         }
         public IActionResult Index()
         {
-            List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll().ToList();
+            List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll(includeProperties: "Teams").ToList();
 
             return View(objAgentList);
         }
