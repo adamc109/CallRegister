@@ -64,33 +64,36 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         }
 
 
+
+
+        #region API CALLS
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            List<Agent> objAgentList = _unitOfWork.AgentRepository.GetAll(includeProperties: "Teams").ToList();
+            return Json(new { data = objAgentList });
+        }
+        [HttpDelete]
         public IActionResult Delete(int? id)
         {
-            if (id == null || id == 0)
+            var agentToDelete = _unitOfWork.AgentRepository.Get(u=>u.Id == id);
+            if (agentToDelete == null)
             {
-                return NotFound();
+                return Json(new { success  = false , message = "Error while deletubg"});
             }
 
-            Agent? agentFromDb = _unitOfWork.AgentRepository.Get(u => u.Id == id);
-            if (agentFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(agentFromDb);
-        }
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePost(int? id)
-        {
-            Agent? obj = _unitOfWork.AgentRepository.Get(u => u.Id == id);
-            if (obj == null)
-            {
-                return NotFound(id);
-            }
-            _unitOfWork.AgentRepository.Remove(obj);
+            _unitOfWork.AgentRepository.Remove(agentToDelete);
             _unitOfWork.Save();
-            TempData["success"] = "Agent Deleted Successfully";
-            return RedirectToAction("Index");
+            //TempData["success"] = "Agent Deleted Successfully";
+
+
+            return Json(new { success = true, message = "Delete Successful" });
         }
 
+
+
+        #endregion
     }
+
+
 }
