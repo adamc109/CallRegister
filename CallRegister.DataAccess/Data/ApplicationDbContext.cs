@@ -1,24 +1,32 @@
 ﻿using CallRegister.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace CallRegisterWeb.DataAccess.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
             
         }
 
+
+
         public DbSet<Email> Emails { get; set; }
         public DbSet<PhoneCall> PhoneCalls { get; set; }
         public DbSet<Agent> Agents { get; set; }
         public DbSet<Products> Products { get; set; }
         public DbSet<Teams> Teams { get; set; }
+        public DbSet<ApplicationUser> applicationUsers { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Agent>().HasData(
                 new Agent { Id = 1, Name = "Nick", TeamId = 1 },
                 new Agent { Id = 2, Name = "Mark", TeamId = 2 },
