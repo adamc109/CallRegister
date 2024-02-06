@@ -1,13 +1,16 @@
 ﻿using CallRegister.DataAccess.Repository;
 using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
+using CallRegister.Utility;
 using CallRegisterWeb.DataAccess.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
 namespace CallRegisterWeb.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class TeamsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
