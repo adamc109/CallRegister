@@ -4,6 +4,7 @@ using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CallRegisterWeb.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240213211916_testphone")]
+    partial class testphone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,20 +122,14 @@ namespace CallRegisterWeb.DataAccess.Migrations
                     b.Property<string>("Agent")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime?>("AllocatedDate")
-                        .HasColumnType("datetime2");
+                    b.Property<DateOnly?>("AllocatedDate")
+                        .HasColumnType("date");
 
-                    b.Property<bool>("Complete")
-                        .HasColumnType("bit");
+                    b.Property<DateOnly?>("DateCompleted")
+                        .HasColumnType("date");
 
-                    b.Property<DateTime?>("DateCompleted")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DateDue")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("Internal")
-                        .HasColumnType("bit");
+                    b.Property<DateOnly?>("DateDue")
+                        .HasColumnType("date");
 
                     b.Property<int?>("ProductsId")
                         .HasColumnType("int");

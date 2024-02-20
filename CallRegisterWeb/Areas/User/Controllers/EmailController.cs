@@ -1,6 +1,7 @@
 ﻿using CallRegister.DataAccess.Repository;
 using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
+using CallRegister.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CallRegisterWeb.Areas.User.Controllers
@@ -17,6 +18,12 @@ namespace CallRegisterWeb.Areas.User.Controllers
         public IActionResult Index()
         {
            return View();
+        }
+        [HttpPost]
+        public IActionResult Index(EmailVM obj)
+        {
+            
+            return View();
         }
     }
 }

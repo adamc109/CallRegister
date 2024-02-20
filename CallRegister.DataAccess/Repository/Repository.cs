@@ -21,6 +21,7 @@ namespace CallRegister.DataAccess.Repository
             //db.Agents = dbSet
             this.dbSet = _db.Set<T>();
             _db.Agents.Include(u => u.Teams);
+            _db.PhoneCalls.Include(u => u.Products);
         }
         public void Add(T entity)
         {

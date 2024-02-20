@@ -1,1 +1,41 @@
-﻿<h1>hi</h1>
+﻿@model EmailVM
+
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Add Product</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.Agent"></label>
+            <input asp-for="Email.Agent" class="form-control" />
+            <span asp-validation-for="Email.Agent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.Internal"></label>
+            <input asp-for="Email.Internal" type="checkbox" />
+            <span asp-validation-for="Email.Internal" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.ProductType"></label>
+            <input asp-for="Email.ProductType" class="form-control" />
+            <span asp-validation-for="Email.ProductType" class="text-danger"></span>
+        </div>
+        @* Add Check box for internal later *@
+@*         <div class="mb-3">
+            <label asp-for="Email.Internal"></label>
+            <input asp-for="Email.Internal" type="checkbox" />
+            <span asp-validation-for="Email.ProductType" class="text-danger"></span>
+        </div> *@
+        <div class="row">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary">Add Product</button>
+                <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</form>
