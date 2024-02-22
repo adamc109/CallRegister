@@ -24,7 +24,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
 
         public IActionResult OverDuePhone() 
         {
-            List<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetAll(includeProperties: "Products").ToList();
+            IEnumerable<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetIncomplete();
             return View(objOverdueCalls); 
         }
 
