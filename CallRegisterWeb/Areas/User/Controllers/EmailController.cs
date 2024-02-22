@@ -9,7 +9,6 @@ namespace CallRegisterWeb.Areas.User.Controllers
     [Area("User")]
     public class EmailController : Controller
     {
-        //dependency injection
         private readonly IUnitOfWork _unitOfWork;
         public EmailController(IUnitOfWork unitOfWork)
         {
