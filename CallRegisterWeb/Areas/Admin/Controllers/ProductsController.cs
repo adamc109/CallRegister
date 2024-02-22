@@ -42,14 +42,14 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             return View();
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(string? id)
         {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
+            //if (id == null || id == 0)
+            //{
+            //    return NotFound();
+            //}
 
-            Products? productFromDb = _unitOfWork.ProductsRepository.Get(u => u.Id == id);
+            Products? productFromDb = _unitOfWork.ProductsRepository.Get(u => u.Name == id);
             if (productFromDb == null)
             {
                 return NotFound();

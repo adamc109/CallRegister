@@ -23,5 +23,10 @@ namespace CallRegister.DataAccess.Repository
         {
             _db.PhoneCalls.Update(obj);
         }
+
+        public IEnumerable<PhoneCall> GetIncomplete()
+        {
+            return _db.PhoneCalls.Where(x => x.Complete == false).ToList();
+        }
     }
 }

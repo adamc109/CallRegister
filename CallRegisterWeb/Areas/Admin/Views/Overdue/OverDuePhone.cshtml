@@ -21,17 +21,16 @@
         @foreach (var obj in Model.OrderBy(u => u.Id))
         {
 
-            @if (obj.DateDue > obj.DateCompleted & obj.Complete == false)
-            {
+           
                 <tr>
                 <td>@obj.Agent</td>
                 <td>@obj.AllocatedDate</td>
                 <td>@obj.DateDue</td>
                 
                  <td>Yes</td>            
-                <td>@obj.Products.Name</td>
+                @* <td>@obj.Products.Name</td> *@
             </tr>
-            }
+            
         }
     </tbody>
 </table>

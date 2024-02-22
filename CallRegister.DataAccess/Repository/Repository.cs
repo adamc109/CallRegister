@@ -1,4 +1,5 @@
 ﻿using CallRegister.DataAccess.Repository.IRepository;
+using CallRegister.Models;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -51,13 +52,15 @@ namespace CallRegister.DataAccess.Repository
             if (!string.IsNullOrEmpty(includeProperties))
             {
                 foreach (var property in includeProperties.
-                    Split(new char[] {','}, StringSplitOptions.RemoveEmptyEntries))
+                    Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
                 {
                     query = query.Include(property);
                 }
             }
             return query.ToList();
         }
+
+   
 
         public void Remove(T entity)
         {
