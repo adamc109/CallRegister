@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace CallRegister.Models.ViewModels
 {
-    public class PhoneCallVM
+    public class AgentsListVM
     {
-        public PhoneCall? PhoneCall { get; set; }
+        public Agent Agent { get; set; }
+        public List<PhoneCall>? PhoneCalls { get; set; }
+        public List<Email>? Emails { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem>? ProductList { get; set; }
+        public IEnumerable<SelectListItem>? AgentList { get; set; }
 
     }
 }

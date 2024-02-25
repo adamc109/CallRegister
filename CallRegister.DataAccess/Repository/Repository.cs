@@ -60,7 +60,22 @@ namespace CallRegister.DataAccess.Repository
             return query.ToList();
         }
 
-   
+        public IEnumerable<T> GetIncomplete(Expression<Func<T, bool>> filter, string? includeProperties = null)
+        {
+            IQueryable<T> query = dbSet;
+            query = query.Where(filter);
+            if (!string.IsNullOrEmpty(includeProperties))
+            {
+                foreach (var property in includeProperties.
+                    Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    query = query.Include(property);
+                }
+            }
+            return query.ToList();
+        }
+
+
 
         public void Remove(T entity)
         {
