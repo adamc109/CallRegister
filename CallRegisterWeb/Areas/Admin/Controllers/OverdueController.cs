@@ -1,9 +1,11 @@
-﻿using CallRegister.DataAccess.Repository.IRepository;
+﻿using CallRegister.DataAccess.Repository;
+using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
 using CallRegister.Utility;
 using CallRegisterWeb.Areas.Admin.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace CallRegisterWeb.Areas.Admin.Controllers
 {
@@ -24,8 +26,11 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
 
         public IActionResult OverDuePhone() 
         {
-            IEnumerable<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetIncomplete();
-            return View(objOverdueCalls); 
+            //IEnumerable<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetIncomplete();
+            //return View(objOverdueCalls); 
+            List<PhoneCall> overdue = _unitOfWork.PhoneCallRepository.GetIncomplete(x => x.Complete == false, includeProperties: "Products").ToList();
+            return View(overdue);
+
         }
 
     }

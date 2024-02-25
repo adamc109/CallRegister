@@ -61,6 +61,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                
                 _unitOfWork.ProductsRepository.Update(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Product Updated Successfully";

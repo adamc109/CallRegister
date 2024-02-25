@@ -36,7 +36,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
 
             obj.PhoneCall.AllocatedDate = DateTime.Now;
             obj.PhoneCall.DateDue = DateTime.Now.AddDays(3);
-            obj.PhoneCall.DateCompleted = DateTime.Now.AddDays(3);
+            //obj.PhoneCall.DateCompleted = DateTime.Now.AddDays(3);
             //add completed date
             if (ModelState.IsValid)
             {

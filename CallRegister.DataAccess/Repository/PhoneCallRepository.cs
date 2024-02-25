@@ -1,6 +1,7 @@
 ﻿using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
 using CallRegisterWeb.DataAccess.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,9 +25,12 @@ namespace CallRegister.DataAccess.Repository
             _db.PhoneCalls.Update(obj);
         }
 
-        public IEnumerable<PhoneCall> GetIncomplete()
-        {
-            return _db.PhoneCalls.Where(x => x.Complete == false).ToList();
-        }
+        //public IEnumerable<PhoneCall> GetIncomplete()
+        //{
+        //    return _db.PhoneCalls.Where(x => !x.Complete).ToList();
+        //}
+
     }
 }
+
+
