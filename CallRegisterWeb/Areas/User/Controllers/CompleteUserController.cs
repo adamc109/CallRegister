@@ -35,7 +35,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
             //    return NotFound();
             //}
 
-            List<PhoneCall> callsFromDb = _unitOfWork.PhoneCallRepository.GetIncomplete(u => u.Agent == id, includeProperties: "Products").ToList();
+            List<PhoneCall> callsFromDb = _unitOfWork.PhoneCallRepository.GetIncomplete(u => u.Agent == id && u.Complete == false, includeProperties: "Products").ToList();
             if (callsFromDb == null)
             {
                 return NotFound();
