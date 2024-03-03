@@ -11,6 +11,7 @@ namespace CallRegister.Models
     public class PhoneCall
     {
         public int Id { get; set; }
+        [Display(Name = "Agent Name")]
         public string? Agent { get; set; }
         public DateTime? AllocatedDate { get; set; }
         public DateTime? DateDue { get; set; }
