@@ -2,26 +2,54 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container text-center py">
+    <h1 class="display-4 text-body-secondary text-body-emphasis font-weight-bold">PhoneCall/Email Register</h1>
+    <h1>### add image?###</h1>
+</div>
+<br />
+<div class="container py-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-lg-3 m-1" >
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="User" asp-controller="Email" asp-action="Index">Add Email</a>
+        </div>
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-lg-center btn-lg " asp-area="User" asp-controller="PhoneCall" asp-action="Index">Add Phone Call</a>
+        </div>
+        
+    </div>
 </div>
 
-<a class="btn btn-primary" asp-area="User" asp-controller="Email" asp-action="Index">Add Email</a>
-<a class="btn btn-primary" asp-area="User" asp-controller="PhoneCall" asp-action="Index">Add Phone Call</a>
-<br />
-<br />
-<a class="btn btn-primary" asp-area="User" asp-controller="CompleteUser" asp-action="Index">Complete Calls</a>
-<a class="btn btn-primary">Complete Emails</a>
-<br />
-<br />
-<a class="btn btn-primary">Email Register</a>
-<a class="btn btn-primary" asp-area="Admin" asp-controller="PhoneLog" asp-action="Index">Phonecall Register</a>
-<br />
-<br />
-<a class="btn btn-primary">Overdue Emails</a>
-<a class="btn btn-primary" asp-area="Admin" asp-controller="Overdue" asp-action="OverDuePhone">Overdue Phonecalls</a>
+<div class="container py-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" >Complete Email</a>
+        </div>
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="User" asp-controller="CompleteUser" asp-action="Index">Complete Call</a>
+        </div>
+    </div>
+</div>
 
+<div class="container py-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg">Email Register</a>
+        </div>
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="Admin" asp-controller="PhoneLog" asp-action="Index">Phonecall Register</a>
+        </div>
+    </div>
+</div>
 
+<div class="container py-2">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg">Overdue Emails</a>
+        </div>
+        <div class="col-sm-4 col-lg-3 m-1">
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="Admin" asp-controller="Overdue" asp-action="OverDuePhone">Overdue Phonecalls</a>
+        </div>
+    </div>
+</div>
 
 
