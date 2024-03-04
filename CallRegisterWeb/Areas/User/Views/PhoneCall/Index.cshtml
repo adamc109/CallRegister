@@ -41,47 +41,10 @@
                 <div class="row">
                     <div class="col-6">
                         <button type="submit" class="btn btn-primary">Add Product</button>
-                        <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back</a>
+                        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back</a>
                     </div>
                 </div>
             </div>
         </form>
     </div>
 </div>
-
-@* <form method="post">
-    <div class="border p-3 mt-4">
-        <div class="row pb-2">
-            <h2 class="text-primary">Add Product</h2>
-            <hr />
-        </div>
-        <div class="mb-3">
-            <label asp-for="PhoneCall.Agent"></label>
-            <input asp-for="PhoneCall.Agent" class="form-control" />
-            <span asp-validation-for="PhoneCall.Agent" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="PhoneCall.Internal"></label>
-            <input asp-for="PhoneCall.Internal" type="checkbox"/>
-        </div>
-        <div class="mb-3">
-            <label asp-for="PhoneCall.Complete"></label>
-            <input asp-for="PhoneCall.Complete" type="checkbox" />
-        </div>
-        <label asp-for="PhoneCall.ProductsId"></label>
-        <select asp-for="PhoneCall.ProductsId" asp-items="@Model.ProductList" class="form-control">
-            <option disabled selected>--Select Product Type--</option>
-        </select>
-
-        <div class="row">
-            <div class="col-6">
-                <button type="submit" class="btn btn-primary">Add Product</button>
-                <a asp-controller="Products" asp-action="Index" class="btn btn-secondary">Back</a>
-            </div>
-        </div>
-
-
-
-
-    </div>
-</form> *@
