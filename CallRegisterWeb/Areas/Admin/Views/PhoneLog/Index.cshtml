@@ -1,40 +1,44 @@
-﻿@model List<PhoneCall>
-<div>
-<table class="table table-bordered table-striped">
+﻿
+<div class="container">
+    @*    <div class="card-body p-6"> *@
+    <div class="row">
+        <div class="col-6">
+            <h1>List of Agents</h1>
+        </div>
+        <div class="col-6 text-end">
 
-    <thead>
-        <tr>
-            <th>
-                Agent Name
-            </th>
-            <th>
-                Allocated Date
-            </th>
-            <th>
-                Date Due
-            </th>
-            <th>Overdue</th>
-            <th>Product</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var obj in Model.OrderBy(u => u.Id))
-        {
+        </div>
+    </div>
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
             <tr>
-                <td>@obj.Agent</td>
-                <td>@obj.AllocatedDate</td>
-                <td>@obj.DateDue</td>
-                @if(obj.DateDue > obj.DateCompleted)
-                { <td>Yes</td>
-                }
-                else
-                {
-                    <td>No</td>
-                }                  
-                <td>@obj.Products.Name</td>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Allocated Date
+                </th>
+                <th>
+                    Due Date
+                </th>
+                <th>
+                    Completed Date
+                </th>
+                <th>
+                    Completed
+                </th>
+                <th>
+                    Product Group
+                </th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+    </table>
     <a asp-area="User" asp-controller="Home" asp-action="Index" class="btn btn-secondary w-50">Back</a>
+
 </div>
+@section Scripts {
+    <script src="~/js/phonelog.js"></script>
+}
