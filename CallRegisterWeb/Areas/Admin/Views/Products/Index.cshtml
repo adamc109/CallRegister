@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h1>List of Productss</h1>
+            <h1>Product Groups</h1>
         </div>
         <div class="col-6 text-end">
             <a asp-controller="Products" asp-action="Create" class="btn btn-primary">
-                Add Products</>
+                Add New Product Group</>
             </a>
         </div>
     </div>
@@ -17,10 +17,10 @@
         <thead>
             <tr>
                 <th>
-                    Products Name
+                    Product Group
                 </th>
                 <th>
-                    Team
+                    
                 </th>
             </tr>
         </thead>
@@ -45,4 +45,5 @@
             }
         </tbody>
     </table>
+    <a asp-area="User" asp-controller="Home" asp-action="Index" class="btn btn-secondary w-50">Back</a>
 </div>
