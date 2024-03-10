@@ -28,7 +28,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
         {
             //IEnumerable<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetIncomplete();
             //return View(objOverdueCalls); 
-            List<PhoneCall> overdue = _unitOfWork.PhoneCallRepository.GetIncomplete(x => x.Complete == false, includeProperties: "Products").ToList();
+            List<PhoneCall> overdue = _unitOfWork.PhoneCallRepository.GetIncomplete(x => x.Complete == false && DateTime.Now > x.DateDue, includeProperties: "Products").ToList();
             return View(overdue);
 
         }
