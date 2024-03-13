@@ -12,7 +12,7 @@
 <div class="container py-2">
     <div class="row justify-content-center">
         <div class="col-sm-4 col-lg-3 m-1" >
-            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="User" asp-controller="Email" asp-action="Index">Add Email</a>
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="User" asp-controller="Email" asp-action="AddEmail">Add Email</a>
         </div>
         <div class="col-sm-4 col-lg-3 m-1">
             <a class="btn btn-primary p-3 h-100 w-100 text-lg-center btn-lg " asp-area="User" asp-controller="PhoneCall" asp-action="Index">Add Phone Call</a>
@@ -35,7 +35,7 @@
 <div class="container py-2">
     <div class="row justify-content-center">
         <div class="col-sm-4 col-lg-3 m-1">
-            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg">Email Register</a>
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="User" asp-controller="EmailLog" asp-action="EmailLog">Email Register</a>
         </div>
         <div class="col-sm-4 col-lg-3 m-1">
             <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="Admin" asp-controller="PhoneLog" asp-action="Index">Phonecall Register</a>
@@ -46,7 +46,7 @@
 <div class="container py-2">
     <div class="row justify-content-center">
         <div class="col-sm-4 col-lg-3 m-1">
-            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg">Overdue Emails</a>
+            <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="Admin" asp-controller="Overdue" asp-action="OverDueEmail">Overdue Emails</a>
         </div>
         <div class="col-sm-4 col-lg-3 m-1">
             <a class="btn btn-primary p-3 h-100 w-100 text-center btn-lg" asp-area="Admin" asp-controller="Overdue" asp-action="OverDuePhone">Overdue Phonecalls</a>

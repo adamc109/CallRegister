@@ -3,26 +3,47 @@ using CallRegister.DataAccess.Repository.IRepository;
 using CallRegister.Models;
 using CallRegister.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace CallRegisterWeb.Areas.User.Controllers
 {
     [Area("User")]
     public class EmailController : Controller
     {
+        //dependency injection
         private readonly IUnitOfWork _unitOfWork;
         public EmailController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
-        public IActionResult Index()
+        public IActionResult AddEmail()
         {
-           return View();
+            EmailVM emailVM = new()
+            {
+                ProductList = _unitOfWork.ProductsRepository.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+            };
+
+
+            return View(emailVM);
         }
         [HttpPost]
-        public IActionResult Index(EmailVM obj)
+        public IActionResult AddEmail(EmailVM obj)
         {
-            
-            return View();
+
+            obj.Email.AllocatedDate = DateTime.Now;
+            obj.Email.DateDue = DateTime.Now.AddDays(3);
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.EmailRepository.Add(obj.Email);
+                _unitOfWork.Save();
+                return RedirectToAction("AddEmail");
+            }
+
+            return RedirectToAction("AddEmail");
         }
     }
 }
