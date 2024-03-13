@@ -33,5 +33,14 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
 
         }
 
+        public IActionResult OverDueEmail()
+        {
+            //IEnumerable<PhoneCall> objOverdueCalls = _unitOfWork.PhoneCallRepository.GetIncomplete();
+            //return View(objOverdueCalls); 
+            List<Email> overdueEmail = _unitOfWork.EmailRepository.GetIncomplete(x => x.Complete == false && DateTime.Now > x.DateDue, includeProperties: "Products").ToList();
+            return View(overdueEmail);
+
+        }
+
     }
 }

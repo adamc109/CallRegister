@@ -1,0 +1,38 @@
+﻿@model List<Email>
+<div>
+    <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Allocated Date
+                </th>
+                <th>
+                    Date Due
+                </th>
+                <th>Overdue</th>
+                <th>Product</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model.OrderBy(u => u.Id))
+            {
+
+
+                <tr>
+                    <td>@obj.Agent</td>
+                    <td>@obj.AllocatedDate</td>
+                    <td>@obj.DateDue</td>
+
+                    <td>Yes</td>
+                    <td>@obj.Products.Name</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    <a asp-area="User" asp-controller="Home" asp-action="Index" class="btn btn-secondary w-50">Back</a>
+</div>

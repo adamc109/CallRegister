@@ -1,0 +1,42 @@
+﻿
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Email Register List</h1>
+        </div>
+        <div class="col-6 text-end">
+        </div>
+    </div>
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Allocated Date
+                </th>
+                <th>
+                    Due Date
+                </th>
+                <th>
+                    Completed Date
+                </th>
+                <th>
+                    Completed
+                </th>
+                <th>
+                    Product Group
+                </th>
+            </tr>
+        </thead>
+    </table>
+    <a asp-area="User" asp-controller="Home" asp-action="Index" class="btn btn-secondary w-50">Back</a>
+
+</div>
+@section Scripts {
+    <script src="~/js/emaillog.js"></script>
+}

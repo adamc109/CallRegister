@@ -16,6 +16,8 @@ namespace CallRegister.DataAccess.Repository
         public IProductsRepository ProductsRepository { get; private set; }
         public ITeamsRepository TeamsRepository { get; private set; }
         public IPhoneCallRepository PhoneCallRepository { get; private set; }
+        public IEmailRepository EmailRepository { get; private set; }
+        
         public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
@@ -23,6 +25,7 @@ namespace CallRegister.DataAccess.Repository
             ProductsRepository = new ProductsRepository(_db);
             TeamsRepository = new TeamsRepository(_db);
             PhoneCallRepository = new PhoneCallRepository(_db);
+            EmailRepository = new EmailRepository(_db);
         }
 
 

@@ -12,6 +12,7 @@ namespace CallRegister.DataAccess.Repository.IRepository
         IProductsRepository ProductsRepository { get; }
         ITeamsRepository TeamsRepository { get; }
         IPhoneCallRepository PhoneCallRepository { get; }
+        IEmailRepository EmailRepository { get; }
 
         void Save();
     }
