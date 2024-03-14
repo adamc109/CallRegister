@@ -1,0 +1,47 @@
+﻿@model List<Email>
+<h1>### ADD title</h1>
+<table class="table table-bordered table-striped">
+
+    <thead>
+        <tr>
+            <th>
+                Agent Name
+            </th>
+            <th>
+                Allocated Date
+            </th>
+            <th>
+                Date Due
+            </th>
+            <th>Overdue</th>
+            <th>Product</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var obj in Model.OrderBy(u => u.Id))
+        //add complete??
+        {
+
+
+            <tr>
+                <td>@obj.Agent</td>
+                <td>@obj.AllocatedDate</td>
+                <td>@obj.DateDue</td>
+
+                <td>Yes</td>
+                <td>@obj.Products.Name</td>
+                <td>
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-controller="CompleteEmail" asp-action="UpdateComplete" asp-route-objid="@obj.Id" class="btn btn-primary mx-2">
+                            <i class="bi bi-pencil"></i> Select
+                        </a>
+
+                    </div>
+                </td>
+
+            </tr>
+
+        }
+    </tbody>
+</table>
