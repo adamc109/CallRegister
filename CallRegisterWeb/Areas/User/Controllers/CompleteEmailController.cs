@@ -11,10 +11,10 @@ namespace CallRegisterWeb.Areas.User.Controllers
 {
     [Area("User")]
     //[Authorize(Roles = SD.Role_Admin)]
-    public class CompleteUserController : Controller
+    public class CompleteEmailController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        public CompleteUserController(IUnitOfWork unitOfWork)
+        public CompleteEmailController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
@@ -28,7 +28,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
  
         public IActionResult Edit(string? id)
         {
-            List<PhoneCall> callsFromDb = _unitOfWork.PhoneCallRepository.GetIncomplete(u => u.Agent == id && u.Complete == false, includeProperties: "Products").ToList();
+            List<Email> callsFromDb = _unitOfWork.EmailRepository.GetIncomplete(u => u.Agent == id && u.Complete == false, includeProperties: "Products").ToList();
             if (callsFromDb == null)
             {
                 return NotFound();
@@ -39,10 +39,10 @@ namespace CallRegisterWeb.Areas.User.Controllers
 
         public IActionResult UpdateComplete(int? objid)
         {
-            PhoneCall phoneCall = _unitOfWork.PhoneCallRepository.Get(u => u.Id == objid);
-            phoneCall.Complete = true;
-            phoneCall.DateCompleted = DateTime.Now;
-            _unitOfWork.PhoneCallRepository.Update(phoneCall);
+            Email email = _unitOfWork.EmailRepository.Get(u => u.Id == objid);
+            email.Complete = true;
+            email.DateCompleted = DateTime.Now;
+            _unitOfWork.EmailRepository.Update(email);
             _unitOfWork.Save();
 
             return RedirectToAction(actionName: "Index");
