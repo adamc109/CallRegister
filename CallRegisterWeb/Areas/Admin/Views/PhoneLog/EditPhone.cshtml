@@ -1,0 +1,60 @@
+﻿@model PhoneCallVM
+<form method="post">
+    <input asp-for="PhoneCall.Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update PhoneCall</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.Agent"></label>
+            <input asp-for="PhoneCall.Agent" class="form-control" />
+            <span asp-validation-for="PhoneCall.Agent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.DateDue"></label>
+            <input asp-for="PhoneCall.DateDue" class="form-control" />
+            <span asp-validation-for="PhoneCall.DateDue" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.DateCompleted"></label>
+            <input asp-for="PhoneCall.DateCompleted" class="form-control" />
+            <span asp-validation-for="PhoneCall.DateCompleted" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.AllocatedDate"></label>
+            <input asp-for="PhoneCall.AllocatedDate" class="form-control" />
+            <span asp-validation-for="PhoneCall.AllocatedDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.Internal"></label>
+            <input asp-for="PhoneCall.Internal" class="checkbox" />
+            <span asp-validation-for="PhoneCall.Internal" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.Complete"></label>
+            <input asp-for="PhoneCall.Complete" class="checkbox" />
+            <span asp-validation-for="PhoneCall.Complete" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="PhoneCall.ProductsId"></label>
+
+            <select asp-for="PhoneCall.ProductsId" asp-items="@Model.ProductList" class="form-control">
+                <option disabled selected>--Select Product--</option>
+            </select>
+            <span asp-validation-for="PhoneCall.ProductsId" class="text-danger"></span>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+              
+                    <button type="submit" class="btn btn-primary">Update</button>
+
+                <a asp-controller="PhoneLog" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</form>

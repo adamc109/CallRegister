@@ -6,6 +6,7 @@ using CallRegister.Utility;
 using CallRegisterWeb.DataAccess.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Reflection.Metadata.Ecma335;
 
 namespace CallRegisterWeb.Areas.Admin.Controllers
@@ -44,6 +45,25 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
 
         //    return View();
         //}
+
+        public IActionResult EditPhone(int? id)
+        {
+            PhoneCallVM phoneCallVM = new()
+            {
+                ProductList = _unitOfWork.ProductsRepository.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                PhoneCall = new PhoneCall()
+            };
+
+            phoneCallVM.PhoneCall = _unitOfWork.PhoneCallRepository.Get(u => u.Id == id);
+            
+            return View(phoneCallVM);
+        }
+   
+            
 
 
 
