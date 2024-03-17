@@ -62,8 +62,20 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             
             return View(phoneCallVM);
         }
-   
-            
+
+        [HttpPost]
+        public IActionResult EditPhone(PhoneCallVM phoneCallVM)
+        {
+            if (ModelState.IsValid)
+            {
+                _unitOfWork.PhoneCallRepository.Update(phoneCallVM.PhoneCall);
+                _unitOfWork.Save();
+                TempData["success"] = "Phone Call Updated Successfully";
+                return RedirectToAction("Index", "Agent");
+            }
+
+            return View();
+        }
 
 
 
