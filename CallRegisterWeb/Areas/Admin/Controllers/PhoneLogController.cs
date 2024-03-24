@@ -71,7 +71,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
                 _unitOfWork.PhoneCallRepository.Update(phoneCallVM.PhoneCall);
                 _unitOfWork.Save();
                 TempData["success"] = "Phone Call Updated Successfully";
-                return RedirectToAction("Index", "Agent");
+                return RedirectToAction("Index");
             }
 
             return View();
