@@ -1,0 +1,42 @@
+﻿<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h1>Phone Call Register List</h1>
+        </div>
+        <div class="col-10 text-end">
+        </div>
+    </div>
+    <table id="tblData" class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+                <th>
+                    Agent Name
+                </th>
+                <th>
+                    Allocated Date
+                </th>
+                <th>
+                    Due Date
+                </th>
+                <th>
+                    Completed Date
+                </th>
+                <th>
+                    Internal
+                </th>
+                <th>
+                    Product Group
+                </th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+    </table>
+    <a asp-area="User" asp-controller="Home" asp-action="Index" class="btn btn-secondary w-50">Back</a>
+
+</div>
+@section Scripts {
+    <script src="~/js/phonelogUser.js"></script>
+}

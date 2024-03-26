@@ -1,0 +1,65 @@
+﻿@model EmailVM
+<form method="post">
+    <input asp-for="Email.Id" hidden />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Email</h2>
+            <hr />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.Agent"></label>
+            <input asp-for="Email.Agent" class="form-control" />
+            <span asp-validation-for="Email.Agent" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.DateDue"></label>
+            <input asp-for="Email.DateDue" class="form-control" />
+            <span asp-validation-for="Email.DateDue" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.DateCompleted"></label>
+            <input asp-for="Email.DateCompleted" class="form-control" />
+            <span asp-validation-for="Email.DateCompleted" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.AllocatedDate"></label>
+            <input asp-for="Email.AllocatedDate" class="form-control" />
+            <span asp-validation-for="Email.AllocatedDate" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.Internal"></label>
+            <input asp-for="Email.Internal" class="checkbox" />
+            <span asp-validation-for="Email.Internal" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.Complete"></label>
+            <input asp-for="Email.Complete" class="checkbox" />
+            <span asp-validation-for="Email.Complete" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Email.ProductsId"></label>
+
+            <select asp-for="Email.ProductsId" asp-items="@Model.ProductList" class="form-control">
+                <option disabled selected>--Select Product--</option>
+            </select>
+            <span asp-validation-for="Email.ProductsId" class="text-danger"></span>
+
+        </div>
+        <div class="row">
+            <div class="col-6">
+
+                <button type="submit" class="btn btn-primary">Update</button>
+
+                <a asp-controller="PhoneLog" asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+
+        </div>
+
+
+    </div>
+</form>
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
