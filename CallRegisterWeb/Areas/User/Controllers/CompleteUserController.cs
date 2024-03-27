@@ -43,6 +43,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
             phoneCall.Complete = true;
             phoneCall.DateCompleted = DateTime.Now;
             _unitOfWork.PhoneCallRepository.Update(phoneCall);
+            TempData["success"] = "Phone Call Completed Successfully";
             _unitOfWork.Save();
 
             return RedirectToAction(actionName: "Index");

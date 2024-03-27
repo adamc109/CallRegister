@@ -40,6 +40,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
             {
                 _unitOfWork.EmailRepository.Add(obj.Email);
                 _unitOfWork.Save();
+                TempData["success"] = "Email Created Successfully";
                 return RedirectToAction("AddEmail");
             }
 

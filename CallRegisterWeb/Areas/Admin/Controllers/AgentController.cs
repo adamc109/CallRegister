@@ -59,7 +59,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             {
                 _unitOfWork.AgentRepository.Update(agentVM.Agent);
                 _unitOfWork.Save();
-                TempData["success"] = "Agent Created Successfully";
+                //TempData["success"] = "Agent Created Successfully";
                 return RedirectToAction("Index", "Agent");
             }
 

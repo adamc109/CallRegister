@@ -69,8 +69,7 @@ namespace CallRegisterWeb.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _unitOfWork.PhoneCallRepository.Update(phoneCallVM.PhoneCall);
-                _unitOfWork.Save();
-                TempData["success"] = "Phone Call Updated Successfully";
+                _unitOfWork.Save();                
                 return RedirectToAction("Index");
             }
 
