@@ -43,6 +43,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
             email.Complete = true;
             email.DateCompleted = DateTime.Now;
             _unitOfWork.EmailRepository.Update(email);
+            TempData["success"] = "Email Completed Successfully";
             _unitOfWork.Save();
 
             return RedirectToAction(actionName: "Index");

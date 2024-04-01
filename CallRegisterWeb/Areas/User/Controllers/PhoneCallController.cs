@@ -43,7 +43,7 @@ namespace CallRegisterWeb.Areas.User.Controllers
                 _unitOfWork.PhoneCallRepository.Add(obj.PhoneCall);
                 _unitOfWork.Save();
                 TempData["success"] = "Phone Call Created Successfully";
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View();
