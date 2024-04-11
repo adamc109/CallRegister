@@ -15,10 +15,11 @@
                     <h2 class="text-primary">Add Email</h2>
                     <hr />
                 </div>
-                <div class="mb-2">
+                <div class=" mb-3">
                     <label asp-for="Email.Agent"></label>
-                    <input asp-for="Email.Agent" class="form-control" />
-                    <span asp-validation-for="Email.Agent" class="text-danger"></span>
+                    <select asp-for="Email.Agent" asp-items="@Model.AgentList" class="form-control">
+                        <option disabled selected>--Select Agent--</option>
+                    </select>
                 </div>
                 <div class="mb-2">
                     <label>Internal Email</label>

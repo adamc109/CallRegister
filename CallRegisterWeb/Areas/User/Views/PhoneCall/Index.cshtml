@@ -17,8 +17,9 @@
                 </div>
                 <div class="mb-2">
                     <label asp-for="PhoneCall.Agent"></label>
-                    <input asp-for="PhoneCall.Agent" class="form-control" />
-                    <span asp-validation-for="PhoneCall.Agent" class="text-danger"></span>
+                    <select asp-for="PhoneCall.Agent" asp-items="@Model.AgentList" class="form-control">
+                        <option disabled selected>--Select Product Type--</option>
+                    </select>
                 </div>
                 <div class="mb-2">
                     <label>Internal Call</label>

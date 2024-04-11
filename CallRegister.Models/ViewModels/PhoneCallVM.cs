@@ -12,7 +12,9 @@ namespace CallRegister.Models.ViewModels
     {
         public PhoneCall? PhoneCall { get; set; }
         [ValidateNever]
-        public IEnumerable<SelectListItem>? ProductList { get; set; }
+        public IEnumerable<SelectListItem> ProductList { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> AgentList { get; set; }
 
     }
 }

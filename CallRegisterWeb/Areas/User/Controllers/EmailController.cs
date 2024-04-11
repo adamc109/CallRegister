@@ -25,6 +25,11 @@ namespace CallRegisterWeb.Areas.User.Controllers
                     Text = u.Name,
                     Value = u.Id.ToString()
                 }),
+                AgentList = _unitOfWork.AgentRepository.GetAll().Select(u => new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Name.ToString()
+                }),
             };
 
 

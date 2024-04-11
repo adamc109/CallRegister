@@ -13,6 +13,8 @@ namespace CallRegister.Models.ViewModels
         public Email Email { get; set; }
         [ValidateNever]
         public IEnumerable<SelectListItem> ProductList { get; set; }
+        [ValidateNever]
+        public IEnumerable<SelectListItem> AgentList { get; set; }
 
     }
 }
